@@ -9,6 +9,16 @@
 
     <TableRow
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lstProdutos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
 
@@ -43,13 +53,4 @@
 
     </TableRow>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:id="@+id/lstProdutos"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableRow>
 </LinearLayout>
