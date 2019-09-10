@@ -34,6 +34,13 @@
             android:layout_width="142dp"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:id="@+id/btnFechar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="fechar"
+            android:text="Fechar" />
+
     </TableRow>
 
     <TableRow

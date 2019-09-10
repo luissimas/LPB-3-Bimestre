@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".CadastrarProdutos" />
         <activity android:name=".CadastrarConsumo" />
-        <activity android:name=".Relatorio"></activity>
+        <activity android:name=".Relatorio" />
+        <activity android:name=".RelatorioDia"></activity>
     </application>
 
 </manifest>
