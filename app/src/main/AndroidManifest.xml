@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CadastrarProdutos" />
-        <activity android:name=".CadastrarConsumo"></activity>
+        <activity android:name=".CadastrarConsumo" />
+        <activity android:name=".Relatorio"></activity>
     </application>
 
 </manifest>

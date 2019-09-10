@@ -29,4 +29,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, CadastrarConsumo.class);
         startActivity(intent);
     }
+
+    public void abrirRelatorio(View v){
+        Intent intent = new Intent(MainActivity.this, Relatorio.class);
+        startActivity(intent);
+    }
 }

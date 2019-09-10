@@ -39,6 +39,13 @@
             android:layout_height="wrap_content"
             android:onClick="abrirConsumo"
             android:text="Consumo" />
+
+        <Button
+            android:id="@+id/btnAbrirRelatorio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="abrirRelatorio"
+            android:text="Relatorio" />
     </TableRow>
 
 </LinearLayout>
