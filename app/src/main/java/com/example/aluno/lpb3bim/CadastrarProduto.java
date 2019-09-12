@@ -17,7 +17,7 @@ import com.example.aluno.lpb3bim.Model.Produto;
 
 import java.util.ArrayList;
 
-public class CadastrarProdutos extends AppCompatActivity {
+public class CadastrarProduto extends AppCompatActivity {
 
     private EditText txtCodigo;
     private EditText txtDescr;

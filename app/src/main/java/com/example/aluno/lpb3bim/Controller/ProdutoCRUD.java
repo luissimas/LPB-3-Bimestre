@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.aluno.lpb3bim.Model.Banco;
 import com.example.aluno.lpb3bim.Model.Produto;
 
-public class ProdutosCRUD {
+public class ProdutoCRUD {
     public void gravar(Context context, Produto obj) throws Exception {
         Banco conexao;
         SQLiteDatabase bb;
