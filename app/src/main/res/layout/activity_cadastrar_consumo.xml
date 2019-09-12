@@ -27,7 +27,7 @@
             android:inputType="none" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/cmbProdutos"
             android:layout_width="265dp"
             android:layout_height="match_parent" />
 

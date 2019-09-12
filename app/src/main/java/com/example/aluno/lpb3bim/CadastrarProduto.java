@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.aluno.lpb3bim.Controller.ProdutosCRUD;
+import com.example.aluno.lpb3bim.Controller.ProdutoCRUD;
 import com.example.aluno.lpb3bim.Model.Lista;
 import com.example.aluno.lpb3bim.Model.Produto;
 
@@ -64,20 +64,60 @@ public class CadastrarProduto extends AppCompatActivity {
     }
 
     public void gravar(){
+        Produto produto = new Produto();
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+
+        try{
+            produto.setDescr(txtDescr.getText().toString());
+            produto.setUnidade(txtUnidade.getText().toString());
+            produto.setCaloria(txtCalorias.getText().toString());
+
+            produtoCRUD.gravar(getBaseContext(), produto);
+
+            Toast.makeText(getBaseContext(),"Produto: "+produto.getDescr()+" cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+        }catch(Exception ex){
+            Toast.makeText(getBaseContext(),"Erro: "+ex.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
     public void alterar(){
+        Produto produto = new Produto();
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
 
+        try{
+            produto.setCodigo(txtCodigo.getText().toString());
+            produto.setDescr(txtDescr.getText().toString());
+            produto.setUnidade(txtUnidade.getText().toString());
+            produto.setCaloria(txtCalorias.getText().toString());
+
+            produtoCRUD.alterar(getBaseContext(), produto);
+
+            Toast.makeText(getBaseContext(),"Produto: "+produto.getDescr()+" cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+        }catch(Exception ex){
+            Toast.makeText(getBaseContext(),"Erro: "+ex.getMessage(),Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void remover(){
+        Produto produto = new Produto();
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
 
+        try{
+            produto.setCodigo(txtCodigo.getText().toString());
+
+            produtoCRUD.remover(getBaseContext(), produto);
+
+            Toast.makeText(getBaseContext(),"Produto: "+produto.getDescr()+" cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+        }catch(Exception ex){
+            Toast.makeText(getBaseContext(),"Erro: "+ex.getMessage(),Toast.LENGTH_SHORT).show();
+        }
     }
 
-    public void atualizarLista(){
+    public void Listar(){
         Produto produto = new Produto();
-        ProdutosCRUD produtoCRUD = new ProdutosCRUD();
+        ProdutoCRUD produtoCRUD = new ProdutoCRUD();
         Cursor tabela;
 
         try{
@@ -91,8 +131,14 @@ public class CadastrarProduto extends AppCompatActivity {
                 }
 
                 while(tabela.moveToNext()){
-                    
+
+                    listaLst.add(tabela.getString(2) + "||" + tabela.getInt(3) + "||" + tabela.getInt(4));
+
                 }
+
+                adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaLst);
+
+                lstProduto.setAdapter(adapter);
             }
 
         }catch(Exception ex){

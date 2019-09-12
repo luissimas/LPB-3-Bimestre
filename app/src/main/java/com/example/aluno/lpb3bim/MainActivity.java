@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void abrirCadastro(View v){
-        Intent intent = new Intent(MainActivity.this, CadastrarProdutos.class);
+        Intent intent = new Intent(MainActivity.this, CadastrarProduto.class);
         startActivity(intent);
     }
 
