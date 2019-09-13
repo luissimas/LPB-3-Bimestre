@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CadastrarProdutos">
+    tools:context=".CadastrarProduto">
 
     <TableRow
         android:layout_width="match_parent"
@@ -83,18 +83,21 @@
             android:id="@+id/btnCadastrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="gravar"
             android:text="Cadastrar" />
 
         <Button
             android:id="@+id/btnAlterar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="alterar"
             android:text="Alterar" />
 
         <Button
             android:id="@+id/btnRemover"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="remover"
             android:text="Remover" />
 
         <Button

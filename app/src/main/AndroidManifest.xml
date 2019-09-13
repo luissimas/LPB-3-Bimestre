@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CadastrarProdutos" />
+        <activity android:name=".CadastrarProduto" />
         <activity android:name=".CadastrarConsumo" />
         <activity android:name=".Relatorio" />
         <activity android:name=".RelatorioDia"></activity>

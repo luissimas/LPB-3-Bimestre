@@ -80,7 +80,7 @@ public class ProdutoCRUD {
     public Cursor listar(Context context) throws Exception{
         Banco conexao;
         SQLiteDatabase bb;
-        Cursor tabela= null;
+        Cursor tabela = null;
         try{
             conexao = new Banco(context);
             bb = conexao.getReadableDatabase();
