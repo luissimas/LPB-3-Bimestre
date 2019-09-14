@@ -28,6 +28,7 @@ public class CadastrarProduto extends AppCompatActivity {
     private Button btnRemover;
 
     ArrayList<String> listaLst;
+    ArrayList<Integer> listaCodigos;
     ArrayAdapter<String> adapter;
     private ListView lstProduto;
 
@@ -46,6 +47,42 @@ public class CadastrarProduto extends AppCompatActivity {
         lstProduto =(ListView) findViewById(R.id.lstProdutos);
 
         listar();
+
+        lstProduto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Produto produto = new Produto();
+                ProdutoCRUD produtoCRUD = new ProdutoCRUD();
+                Cursor tabela;
+
+                try{
+                    tabela = produtoCRUD.listar(getBaseContext());
+
+                    if(tabela != null){
+                        if(listaCodigos!=null){
+                            listaCodigos.clear();
+                        }else{
+                            listaCodigos=new ArrayList<>();
+                        }
+
+                        while(tabela.moveToNext()){
+                            listaCodigos.add(tabela.getInt(0));
+                        }
+                    }
+
+                    if((i>=0)&&(i<listaCodigos.size())){
+                        produto = produtoCRUD.preencher(getBaseContext(), listaCodigos.get(i));
+
+                        txtCodigo.setText(String.valueOf(produto.getCodigo()));
+                        txtDescr.setText(String.valueOf(produto.getDescr()));
+                        txtCalorias.setText(String.valueOf(produto.getCaloria()));
+                        txtUnidade.setText(String.valueOf(produto.getUnidade()));
+                    }
+                }catch(Exception ex){
+                    Toast.makeText(getBaseContext(), "Erro: " + ex.getMessage(),Toast.LENGTH_LONG);
+                }
+            }
+        });
     }
 
     public void gravar(View v){
@@ -85,7 +122,7 @@ public class CadastrarProduto extends AppCompatActivity {
             limpar();
             listar();
 
-            Toast.makeText(getBaseContext(),"Produto: "+produto.getDescr()+" cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(),"Produto: "+produto.getDescr()+" alterado com sucesso!",Toast.LENGTH_SHORT).show();
         }catch(Exception ex){
             Toast.makeText(getBaseContext(),"Erro: "+ex.getMessage(),Toast.LENGTH_SHORT).show();
         }
@@ -103,14 +140,13 @@ public class CadastrarProduto extends AppCompatActivity {
             limpar();
             listar();
 
-            Toast.makeText(getBaseContext(),"Produto: "+produto.getDescr()+" cadastrado com sucesso!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(),"Produto: "+produto.getDescr()+" removido com sucesso!",Toast.LENGTH_SHORT).show();
         }catch(Exception ex){
             Toast.makeText(getBaseContext(),"Erro: "+ex.getMessage(),Toast.LENGTH_SHORT).show();
         }
     }
 
     public void listar(){
-        Produto produto = new Produto();
         ProdutoCRUD produtoCRUD = new ProdutoCRUD();
         Cursor tabela;
 
@@ -125,9 +161,7 @@ public class CadastrarProduto extends AppCompatActivity {
                 }
 
                 while(tabela.moveToNext()){
-
                     listaLst.add(tabela.getString(1) + "||" + tabela.getInt(2) + "||" + tabela.getInt(3));
-
                 }
 
                 adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaLst);
