@@ -96,7 +96,7 @@ public class ConsumoCRUD {
         try{
             conexao = new Banco(context);
             bb = conexao.getReadableDatabase();
-            tabela = bb.rawQuery ("Select c.hora,c.minuto, c.dia,c.mes,c.ano,p.descr, c.qtde,((c.qtde/p.unidade)*p.caloria) from consumo c, produto p where c.codproduto=p.codigo and c.dia=? and c.mes=? and c.ano=?",
+            tabela = bb.rawQuery ("Select c.codigo,c.hora,c.minuto,c.dia,c.mes,c.ano,p.descr, c.qtde,((c.qtde/p.unidade)*p.caloria) from consumo c, produto p where c.codproduto=p.codigo and c.dia=? and c.mes=? and c.ano=?",
                     new String []{String.valueOf(dia),String.valueOf(mes),String.valueOf(ano)});
             // bb.close(); // não pode fechar senão o curso também fecha;
             return(tabela);

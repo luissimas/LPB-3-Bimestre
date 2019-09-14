@@ -12,13 +12,13 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Código: " />
+            android:text="Código do produto: " />
 
         <EditText
-            android:id="@+id/edtCodigo"
+            android:id="@+id/edtCodigoProduto"
             android:layout_width="61dp"
             android:layout_height="wrap_content"
             android:clickable="false"
@@ -28,7 +28,7 @@
 
         <Spinner
             android:id="@+id/cmbProdutos"
-            android:layout_width="265dp"
+            android:layout_width="147dp"
             android:layout_height="match_parent" />
 
     </TableRow>
@@ -38,6 +38,21 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Código: " />
+
+        <EditText
+            android:id="@+id/edtCodigo"
+            android:layout_width="33dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:editable="false"
+            android:ems="10"
+            android:inputType="none" />
+
+        <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,10 +60,10 @@
 
         <EditText
             android:id="@+id/edtQuantidade"
-            android:layout_width="91dp"
+            android:layout_width="53dp"
             android:layout_height="wrap_content"
             android:clickable="false"
-            android:editable="false"
+            android:editable="true"
             android:ems="10"
             android:inputType="number" />
 
@@ -60,8 +75,10 @@
 
         <EditText
             android:id="@+id/edtCaloria"
-            android:layout_width="185dp"
+            android:layout_width="124dp"
             android:layout_height="wrap_content"
+            android:clickable="false"
+            android:editable="false"
             android:ems="10"
             android:inputType="none" />
     </TableRow>
@@ -75,18 +92,21 @@
             android:id="@+id/btnCadastrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="gravar"
             android:text="Cadastrar" />
 
         <Button
             android:id="@+id/btnAlterar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="alterar"
             android:text="Alterar" />
 
         <Button
             android:id="@+id/btnRemover"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="remover"
             android:text="Remover" />
 
         <Button
@@ -103,7 +123,7 @@
         android:layout_height="match_parent">
 
         <ListView
-            android:id="@+id/lstProdutos"
+            android:id="@+id/lstConsumos"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </TableRow>

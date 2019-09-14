@@ -28,7 +28,6 @@ public class CadastrarProduto extends AppCompatActivity {
     private Button btnRemover;
 
     ArrayList<String> listaLst;
-    ArrayList<Integer> listaCodigos;
     ArrayAdapter<String> adapter;
     private ListView lstProduto;
 
@@ -44,7 +43,7 @@ public class CadastrarProduto extends AppCompatActivity {
         btnCadastrar=(Button) findViewById(R.id.btnCadastrar);
         btnAlterar=(Button) findViewById(R.id.btnAlterar);
         btnRemover=(Button) findViewById(R.id.btnRemover);
-        lstProduto =(ListView) findViewById(R.id.lstProdutos);
+        lstProduto =(ListView) findViewById(R.id.lstConsumos);
 
         listar();
 
@@ -59,19 +58,19 @@ public class CadastrarProduto extends AppCompatActivity {
                     tabela = produtoCRUD.listar(getBaseContext());
 
                     if(tabela != null){
-                        if(listaCodigos!=null){
-                            listaCodigos.clear();
+                        if(Lista.lstCodigosProdutos!=null){
+                            Lista.lstCodigosProdutos.clear();
                         }else{
-                            listaCodigos=new ArrayList<>();
+                            Lista.lstCodigosProdutos=new ArrayList<>();
                         }
 
                         while(tabela.moveToNext()){
-                            listaCodigos.add(tabela.getInt(0));
+                            Lista.lstCodigosProdutos.add(tabela.getInt(0));
                         }
                     }
 
-                    if((i>=0)&&(i<listaCodigos.size())){
-                        produto = produtoCRUD.preencher(getBaseContext(), listaCodigos.get(i));
+                    if((i>=0)&&(i<Lista.lstCodigosProdutos.size())){
+                        produto = produtoCRUD.preencher(getBaseContext(), Lista.lstCodigosProdutos.get(i));
 
                         txtCodigo.setText(String.valueOf(produto.getCodigo()));
                         txtDescr.setText(String.valueOf(produto.getDescr()));
