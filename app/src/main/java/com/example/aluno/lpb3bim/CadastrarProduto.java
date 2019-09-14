@@ -43,7 +43,7 @@ public class CadastrarProduto extends AppCompatActivity {
         btnCadastrar=(Button) findViewById(R.id.btnCadastrar);
         btnAlterar=(Button) findViewById(R.id.btnAlterar);
         btnRemover=(Button) findViewById(R.id.btnRemover);
-        lstProduto =(ListView) findViewById(R.id.lstConsumos);
+        lstProduto =(ListView) findViewById(R.id.lstConsumo);
 
         listar();
 
@@ -78,7 +78,7 @@ public class CadastrarProduto extends AppCompatActivity {
                         txtUnidade.setText(String.valueOf(produto.getUnidade()));
                     }
                 }catch(Exception ex){
-                    Toast.makeText(getBaseContext(), "Erro: " + ex.getMessage(),Toast.LENGTH_LONG);
+                    Toast.makeText(getBaseContext(), "Erro: " + ex.getMessage(),Toast.LENGTH_LONG).show();
                 }
             }
         });

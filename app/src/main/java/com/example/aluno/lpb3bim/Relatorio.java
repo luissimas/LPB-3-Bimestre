@@ -1,5 +1,6 @@
 package com.example.aluno.lpb3bim;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +12,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.aluno.lpb3bim.Controller.ConsumoCRUD;
-import com.example.aluno.lpb3bim.Controller.ProdutoCRUD;
+import com.example.aluno.lpb3bim.Model.Consumo;
+import com.example.aluno.lpb3bim.Model.Lista;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Relatorio extends AppCompatActivity {
 
@@ -36,7 +37,7 @@ public class Relatorio extends AppCompatActivity {
 
         cmbMes=(Spinner) findViewById(R.id.cmbMes);
         cmbAno=(Spinner) findViewById(R.id.cmbAno);
-        lstConsumos=(ListView) findViewById(R.id.lstConsumos);
+        lstConsumos=(ListView) findViewById(R.id.lstConsumo);
 
         preencherCmb();
 
@@ -63,6 +64,51 @@ public class Relatorio extends AppCompatActivity {
 
             }
         });
+
+        lstConsumos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Consumo consumo;
+                ConsumoCRUD consumoCRUD = new ConsumoCRUD();
+
+                int dia=0;
+
+                Cursor tabela;
+
+                try{
+                    tabela = consumoCRUD.listarMesAno(getBaseContext(), Integer.parseInt(cmbMes.getSelectedItem().toString()), Integer.parseInt(cmbAno.getSelectedItem().toString()));
+
+                    if(tabela != null){
+                        tabela.moveToFirst();
+                        dia = tabela.getInt(0);
+                    }
+
+                    tabela = consumoCRUD.listarDiaMesAno(getBaseContext(), dia, Integer.parseInt(cmbMes.getSelectedItem().toString()), Integer.parseInt(cmbAno.getSelectedItem().toString()));
+
+                    if(tabela != null){
+                        if(Lista.lstConsumo!=null){
+                            Lista.lstConsumo.clear();
+                        }else{
+                            Lista.lstConsumo=new ArrayList<>();
+                        }
+
+                        while(tabela.moveToNext()){
+                            consumo = consumoCRUD.preencher(getBaseContext(), tabela.getInt(0));
+                            Lista.lstConsumo.add(consumo);
+                        }
+
+                        abrirRelatorio(view);
+                    }
+                }catch(Exception ex){
+                    Toast.makeText(getBaseContext(), "Erro: " + ex.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    public void abrirRelatorio(View v){
+        Intent intent = new Intent(Relatorio.this, RelatorioDia.class);
+        startActivity(intent);
     }
 
     public void preencherCmb(){

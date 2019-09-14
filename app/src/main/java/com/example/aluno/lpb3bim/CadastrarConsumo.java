@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,10 +20,6 @@ import com.example.aluno.lpb3bim.Model.Consumo;
 import com.example.aluno.lpb3bim.Model.Lista;
 import com.example.aluno.lpb3bim.Model.Produto;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -59,7 +54,7 @@ public class CadastrarConsumo extends AppCompatActivity {
         btnCadastrar=(Button) findViewById(R.id.btnCadastrar);
         btnAlterar=(Button) findViewById(R.id.btnAlterar);
         btnRemover=(Button) findViewById(R.id.btnRemover);
-        lstConsumo=(ListView) findViewById(R.id.lstConsumos);
+        lstConsumo=(ListView) findViewById(R.id.lstConsumo);
 
         listar();
         preencherCmb();
@@ -73,7 +68,6 @@ public class CadastrarConsumo extends AppCompatActivity {
                 ProdutoCRUD produtoCRUD = new ProdutoCRUD();
 
                 Cursor tabela;
-                Date data = new Date(System.currentTimeMillis());
 
                 try{
                     tabela = consumoCRUD.listar(getBaseContext());
@@ -100,7 +94,7 @@ public class CadastrarConsumo extends AppCompatActivity {
                         txtQuantidade.setText(String.valueOf(consumo.getQtde()));
                     }
                 }catch(Exception ex){
-                    Toast.makeText(getBaseContext(), "Erro: " + ex.getMessage(),Toast.LENGTH_LONG);
+                    Toast.makeText(getBaseContext(), "Erro: " + ex.getMessage(),Toast.LENGTH_LONG).show();
                 }
             }
         });
