@@ -9,16 +9,6 @@
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ListView
-            android:id="@+id/lstConsumos"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
 
@@ -29,8 +19,8 @@
             android:text="Mês" />
 
         <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="80dp"
+            android:id="@+id/cmbMes"
+            android:layout_width="99dp"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -40,8 +30,8 @@
             android:text="Ano" />
 
         <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="142dp"
+            android:id="@+id/cmbAno"
+            android:layout_width="118dp"
             android:layout_height="wrap_content" />
 
         <Button
@@ -51,6 +41,16 @@
             android:onClick="fechar"
             android:text="Fechar" />
 
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lstConsumos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </TableRow>
 
 </LinearLayout>

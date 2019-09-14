@@ -159,11 +159,9 @@ public class CadastrarConsumo extends AppCompatActivity {
                 ProdutoCRUD produtoCRUD = new ProdutoCRUD();
 
                 try{
-                    if(charSequence.length() > 0){
-                        produto = produtoCRUD.preencher(getBaseContext(), Integer.valueOf(txtCodigoProduto.getText().toString()));
+                    produto = produtoCRUD.preencher(getBaseContext(), Integer.valueOf(txtCodigoProduto.getText().toString()));
 
-                        txtCalorias.setText(String.valueOf(Double.valueOf(txtQuantidade.toString()) * produto.getCaloria()));
-                    }
+                    txtCalorias.setText(String.valueOf(Double.parseDouble(txtQuantidade.toString()) * produto.getCaloria()));
                 }catch(Exception ex){
                     Toast.makeText(getBaseContext(), "Erro: " + ex.getMessage(),Toast.LENGTH_LONG);
                 }
@@ -295,6 +293,7 @@ public class CadastrarConsumo extends AppCompatActivity {
     public void limpar(){
         try{
             txtCodigo.setText("");
+            txtCodigoProduto.setText("");
             txtCalorias.setText("");
             txtQuantidade.setText("");
         }catch(Exception ex){
