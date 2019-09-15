@@ -19,7 +19,7 @@ public class RelatorioDia extends AppCompatActivity {
 
     private EditText txtTotal;
 
-    ArrayAdapter<String> adapterLst;
+    ArrayAdapter<String > adapterLst;
     ArrayList<String> lstLista;
     private ListView lstConsumos;
 

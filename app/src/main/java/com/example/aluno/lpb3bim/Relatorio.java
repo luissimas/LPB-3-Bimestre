@@ -23,6 +23,7 @@ public class Relatorio extends AppCompatActivity {
     private Spinner cmbAno;
 
     ArrayList<String> listaLst;
+    ArrayList<Integer> lstDia = new ArrayList<>();
     ArrayList<Integer> lstMes = new ArrayList<>();
     ArrayList<Integer> lstAno = new ArrayList<>();
     ArrayAdapter<Integer> adapterMes;
@@ -79,8 +80,19 @@ public class Relatorio extends AppCompatActivity {
                     tabela = consumoCRUD.listarMesAno(getBaseContext(), Integer.parseInt(cmbMes.getSelectedItem().toString()), Integer.parseInt(cmbAno.getSelectedItem().toString()));
 
                     if(tabela != null){
-                        tabela.moveToFirst();
-                        dia = tabela.getInt(0);
+                        if(lstDia!=null){
+                            lstDia.clear();
+                        }else{
+                            lstDia=new ArrayList<>();
+                        }
+
+                        while(tabela.moveToNext()){
+                            lstDia.add(tabela.getInt(0));
+                        }
+                    }
+
+                    if((i>=0)&&(i<lstDia.size())){
+                        dia = lstDia.get(i);
                     }
 
                     tabela = consumoCRUD.listarDiaMesAno(getBaseContext(), dia, Integer.parseInt(cmbMes.getSelectedItem().toString()), Integer.parseInt(cmbAno.getSelectedItem().toString()));
